@@ -4,7 +4,7 @@ RUN adduser -D smit
 
 WORKDIR ~/smit
 
-RUN apk add -U --no-cache gcc build-base linux-headers ca-certificates  python3-dev libffi-dev libressl-dev libxslt-dev git
+RUN apk add -U --no-cache gcc build-base linux-headers ca-certificates  python3-dev libffi-dev libressl-dev libxslt-dev git sqlite3
 
 RUN git clone https://github.com/Holks/Contacts.git
 
