@@ -6,7 +6,7 @@ WORKDIR ~/smit
 
 RUN apk add -U --no-cache gcc build-base linux-headers ca-certificates  python3-dev libffi-dev libressl-dev libxslt-dev git
 
-RUN git clone https://github.com/Holks/XXXX
+RUN git clone https://github.com/Holks/Contacts.git
 
 COPY requirements.txt requirements.txt
 
@@ -20,6 +20,8 @@ RUN venv/bin/pip install gunicorn pymysql
 COPY app app
 COPY migrations migrations
 COPY coinsys.py config.py boot.sh ./
+COPY app.db app.db
+
 RUN chmod +x boot.sh
 
 ENV FLASK_APP coinsys.py
