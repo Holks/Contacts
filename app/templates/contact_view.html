@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+<div class="container">
+  {# display section heading and add form #}
+<h1 class="page-header"> Secret Contacts!</h1>
+
+    <form  id="editcontactform">
+        <fieldset>
+            <legend>EDIT CONTACT {{ contact.id }} </legssend>
+            <input type="hidden" id="contact_id" name="contact_id" value="{{ contact.id }}">
+            <input type="text" id="actual_name" name="actual_name" value="{{ contact.actual_name }}">
+            <input type="text" id="code_name" name="code_name" value="{{ contact.code_name }}">
+            <input type="text" id="phone_no" name="phone_no" value="{{ contact.phone_no }}">  
+            <button onclick="edit_contact(); return false;">Update</button>
+            <button onclick="delete_contact(); return false;">Delete</button>
+        </fieldset>
+    </form>
+</div>
+{% endblock %}
+{% block app_scripts %}
+  <!-- Form validation script -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+  <!-- Form add as JSON -->
+  <script src="../static/js/json_data.js"></script>
+  <!-- Form submit -->
+  <script src="../static/js/submit_form.js"></script>
+  <!-- contact page -->
+  {# view specific scripts go here #}
+  {% block listview_scripts %}
+  {% endblock %}
+{% endblock %}

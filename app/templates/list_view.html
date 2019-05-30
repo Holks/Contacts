@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+<div class="container">
+  {# display section heading and add form #}
+<h1 class="page-header"> Secret Contacts!</h1>
+
+    <form  id="addcontactform">
+        <fieldset>
+            <legend>ADD CONTACT</legend>
+            <input type="text" id="actual_name" name="actual_name" placeholder="Actual Name">
+            <input type="text" id="code_name" name="code_name" placeholder="Code Name">
+            <input type="text" id="phone_no" name="phone_no" placeholder="Phone No.">  
+            <button onclick="submit_form(); return false;"> ADD </button>
+        </fieldset>
+    </form>
+    <ul class="pagination">
+        {% if data %}        
+        <table id="list_view" class="table table-striped table-bordered" style="width:100%">
+            <thead>
+                <tr>
+                {% for col in header %}
+                    <td>{{ col }}</td>
+                {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+            {% for row in data %}
+                <tr>
+                {% for col in header %}
+                    <td>{{ row[col] }}</td>
+                {% endfor %}
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+    </ul>
+</div>
+{% endblock %}
+{% block app_scripts %}
+  <!-- Form validation script -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+  <!-- Form add as JSON -->
+  <script src="../static/js/json_data.js"></script>
+  <!-- Form submit -->
+  <script src="../static/js/submit_form.js"></script>
+  <!-- contact page -->
+  <script src="../static/js/contact_page.js"></script>
+  <!-- Datatable script -->
+  <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+  <script>
+      $(document).ready(function () {
+          $('#list_view').DataTable();
+      });
+  </script>
+  {# view specific scripts go here #}
+  {% block listview_scripts %}
+  {% endblock %}
+{% endblock %}
