@@ -19,7 +19,7 @@ RUN venv/bin/pip install gunicorn pymysql
 
 COPY app app
 COPY migrations migrations
-COPY mdl.py config.py boot.sh ./
+COPY coinsys.py config.py boot.sh ./
 RUN chmod +x boot.sh
 
 ENV FLASK_APP coinsys.py
